@@ -8,12 +8,14 @@ def softmax(x):
     """
     x = np.asarray(x, dtype=float)
     if x.ndim == 1:
-        y = np.exp(x-np.max(x))
-        total = np.sum(y)
-        return y/total
+        x_max = np.max(x)
+        exp_x = np.exp(x - x_max)
+        return exp_x / np.sum(exp_x)
+
     elif x.ndim == 2:
-        for i in range (np.shape(x)[0]):
-            x[i]=softmax(x[i])
-        return x
-    else : return False
-    
+        x_max = np.max(x, axis=1, keepdims=True)
+        exp_x = np.exp(x - x_max)
+        return exp_x / np.sum(exp_x, axis=1, keepdims=True)
+
+    else:
+        raise ValueError("")
