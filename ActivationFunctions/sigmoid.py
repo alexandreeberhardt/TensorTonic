@@ -6,7 +6,8 @@ def sigmoid(x):
     """
     x = np.asarray(x, dtype=float)
     x = np.negative(x)
-    np.exp(x)
+    x = np.exp(x)
     x = np.add(x, 1)
-    np.reciprocal(x)
+    x = np.reciprocal(x)
     return x
+
