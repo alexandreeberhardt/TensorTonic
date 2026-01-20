@@ -4,7 +4,11 @@ def tanh(x):
     """
     Implement Tanh activation function.
     """
-    x = np.asarray(x, dtype=float)
+    if isinstance(x, (int, float)):
+        x = np.array([x], dtype=float)
+    else:
+        x = np.array(x, dtype=float)
+        
     e1 = np.exp(x)
     e2 = np.exp(-x)
     num = np.subtract(e1,e2)
